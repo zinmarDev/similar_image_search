@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Similar image searching</title>
+</head>
+<body>
+    <form method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    
+    <h2>Query:</h2>
+    <div>
+        <div>{{images.name}}</td>
+        <div><img src="http://localhost:{{current_port}}/static/uploaded/{{images.image}}" width="300px" alt="Image"/></div>
+    </div>
+    <h2>Results:</h2>
+    
+    {% for score in scores %}
+    <img src="http://localhost:{{current_port}}/{{ score }}" alt="image" width="300px">
+    {% endfor %}
+</body>
+</html>
